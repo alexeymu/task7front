@@ -28,7 +28,7 @@ const MainContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
+const API = process.env.REACT_APP_API || 'http://localhost:9000'
 function App() {
   const [isInRoom, setInRoom] = useState(false);
   const [playerSymbol, setPlayerSymbol] = useState<"x" | "o">("x");
@@ -37,7 +37,7 @@ function App() {
 
   const connectSocket = async () => {
     const socket = await socketService
-      .connect("http://localhost:9000")
+      .connect(API)
       .catch((err) => {
         console.log("Error: ", err);
       });
