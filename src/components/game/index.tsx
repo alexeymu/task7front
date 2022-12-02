@@ -29,12 +29,11 @@ const Cell = styled.div<ICellProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
   cursor: pointer;
-  border-top: ${({ borderTop }) => borderTop && "3px solid #8e44ad"};
-  border-left: ${({ borderLeft }) => borderLeft && "3px solid #8e44ad"};
-  border-bottom: ${({ borderBottom }) => borderBottom && "3px solid #8e44ad"};
-  border-right: ${({ borderRight }) => borderRight && "3px solid #8e44ad"};
+  border-top:  3px solid #FF7F50;
+  border-left: 3px solid #FF7F50;
+  border-bottom: 3px solid #FF7F50;
+  border-right: 3px solid #FF7F50;
   transition: all 270ms ease-in-out;
 
   &:hover {
@@ -62,7 +61,7 @@ const X = styled.span`
 
 const O = styled.span`
   font-size: 100px;
-  color: #8e44ad;
+  color: #7FFFD4;
   &::after {
     content: "O";
   }
@@ -149,11 +148,11 @@ export function Game() {
       gameService.updateGame(socketService.socket, newMatrix);
       const [currentPlayerWon, otherPlayerWon] = checkGameState(newMatrix);
       if (currentPlayerWon && otherPlayerWon) {
-        gameService.gameWin(socketService.socket, "The Game is a TIE!");
-        alert("The Game is a TIE!");
+        gameService.gameWin(socketService.socket, "Ничья!");
+        alert("Ничья!");
       } else if (currentPlayerWon && !otherPlayerWon) {
-        gameService.gameWin(socketService.socket, "You Lost!");
-        alert("You Won!");
+        gameService.gameWin(socketService.socket, "Ты проигарл!");
+        alert("Ты выиграл!");
       }
 
       setPlayerTurn(false);
@@ -197,7 +196,7 @@ export function Game() {
   return (
     <GameContainer>
       {!isGameStarted && (
-        <h2>Waiting for Other Player to Join to Start the Game!</h2>
+        <h2>Ожидайте подключение второго игрока для старты игры!</h2>
       )}
       {(!isGameStarted || !isPlayerTurn) && <PlayStopper />}
       {matrix.map((row, rowIdx) => {
