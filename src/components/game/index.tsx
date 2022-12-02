@@ -196,7 +196,7 @@ export function Game() {
   return (
     <GameContainer>
       {!isGameStarted && (
-        <h2>Ожидайте подключение второго игрока для старты игры!</h2>
+        <h2>Ожидай подключение второго джедая<br /> Да прибудет с тобой сила</h2>
       )}
       {(!isGameStarted || !isPlayerTurn) && <PlayStopper />}
       {matrix.map((row, rowIdx) => {
